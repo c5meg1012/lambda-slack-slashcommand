@@ -1,0 +1,23 @@
+{
+  "name": "lambda-slack-slashcommand",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c5meg1012/lambda-slack-slashcommand.git"
+  },
+  "author": "Megumi Mochizuki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/c5meg1012/lambda-slack-slashcommand/issues"
+  },
+  "homepage": "https://github.com/c5meg1012/lambda-slack-slashcommand#readme"
+}
