@@ -1,28 +1,29 @@
 const request = require('request');
+const queryString = require('query-string');
 
 exports.handler = function(event, context) {
+  const slackWebhookUrl = process.env['SLACK_WEBHOOK_URL'];
+  const response = queryString.parse(event.body);
+  let message = '';
 
-  // 本文の成形
-  var message = '@channel:' + "\n";
-  message += '*' + 'もう19時になっちゃったじゃない:lips:' + '*' + "\n";
-  message += '*' + '残業はモテないし早く仕事終わらせて飲みましょーよ:hearts:' + '*';
+  if (response.text !== "" ) {
+    message += 'Twitterを' + response.text + '投稿返す';
+  } else {
+    message +='わん！';
+  }
 
-  // WebHookのURLをここに入れます
-  var slackWebhookUrl = 'https://hooks.slack.com/services/......';
-
-  // リクエスト設定
   const options = {
     url: slackWebhookUrl,
+    method: 'POST',
     headers: {
-      'Content-type': 'application/json'
+      'Content-type': 'application/json',
     },
     body: {
-      "text": message
+      "text": message,
     },
-    json: true
+    json: true,
   };
 
-  // メッセージ送信
   request.post(options, function(error, response, body) {
     if (!error && response.statusCode == 200) {
       context.done(null, body);
